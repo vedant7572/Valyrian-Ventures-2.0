@@ -11,6 +11,7 @@ class Wallet extends StatefulWidget {
   State<Wallet> createState() => _WalletState();
 }
 ///this is new wallet pushing
+///check 2.0
 
 class _WalletState extends State<Wallet> {
   String? wallet, id;
