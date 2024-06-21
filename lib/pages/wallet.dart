@@ -15,22 +15,28 @@ class _WalletState extends State<Wallet> {
   String? wallet, id;
   int? add;
   TextEditingController amountcontroller = new TextEditingController();
-
+  bool _isLoading = true;
   getthesharedpref() async {
     wallet = await SharedPreferenceHelper().getUserWallet();
     id = await SharedPreferenceHelper().getUserId();
-    setState(() {});
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   ontheload() async {
+    setState(() {
+      _isLoading = true;
+    });
     await getthesharedpref();
-    setState(() {});
+
   }
 
   @override
   void initState() {
-    ontheload();
     super.initState();
+    ontheload();
+
   }
 
   Future<void> makePayment(int amount) async{
@@ -44,7 +50,9 @@ class _WalletState extends State<Wallet> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body:  _isLoading
+          ? Center(child: CircularProgressIndicator()) // Display loading indicator
+          :Container(
         margin: EdgeInsets.only(top: 60.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
