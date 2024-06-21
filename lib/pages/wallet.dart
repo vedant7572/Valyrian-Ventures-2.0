@@ -10,6 +10,7 @@ class Wallet extends StatefulWidget {
   @override
   State<Wallet> createState() => _WalletState();
 }
+///this is new wallet pushing
 
 class _WalletState extends State<Wallet> {
   String? wallet, id;
