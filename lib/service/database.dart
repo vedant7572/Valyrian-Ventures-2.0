@@ -17,6 +17,7 @@ class DatabaseMethods{
         .update({"Wallet": amount});
   }
 
+
   // Future<String> getUserWallet(String userId) async {
   //   DocumentSnapshot userDoc = await FirebaseFirestore.instance
   //       .collection("users")
