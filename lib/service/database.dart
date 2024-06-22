@@ -21,6 +21,9 @@ class DatabaseMethods {
     return await FirebaseFirestore.instance.collection(name).add(userInfoMap);
   }
 
+  Future<Stream<QuerySnapshot>> getItem(String name) async {
+    return await FirebaseFirestore.instance.collection(name).snapshots();
+  }
   // Future<String> getUserWallet(String userId) async {
   //   DocumentSnapshot userDoc = await FirebaseFirestore.instance
   //       .collection("users")
