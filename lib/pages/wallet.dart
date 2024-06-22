@@ -66,7 +66,7 @@ class _WalletState extends State<Wallet> {
                         onTap: () {
                           Navigator.pop(context);
                         },
-                        child: Icon(Icons.cancel)
+                        child: const Icon(Icons.cancel)
                     ),//cross icon
                     const SizedBox(
                       width: 60.0,
@@ -85,12 +85,12 @@ class _WalletState extends State<Wallet> {
                 const SizedBox(
                   height: 20.0,
                 ),
-                Text("Amount"),
+                const Text("Amount"),
                 const SizedBox(
                   height: 10.0,
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black38, width: 2.0),
                       borderRadius: BorderRadius.circular(10)),
@@ -111,12 +111,12 @@ class _WalletState extends State<Wallet> {
                     },
                     child: Container(
                       width: 100,
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
-                        color: Color(0xFF008080),
+                        color: const Color(0xFF008080),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Center(
+                      child: const Center(
                           child: Text(
                             "Pay",
                             style: TextStyle(color: Colors.white),
@@ -134,16 +134,16 @@ class _WalletState extends State<Wallet> {
   Widget build(BuildContext context) {
     return Scaffold(
       body:  _isLoading
-          ? Center(child: CircularProgressIndicator()) // Display loading indicator
+          ? const Center(child: CircularProgressIndicator()) // Display loading indicator
           :Container(
-        margin: EdgeInsets.only(top: 60.0),
+        margin: const EdgeInsets.only(top: 60.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Material(
                 elevation: 2.0,
                 child: Container(
-                    padding: EdgeInsets.only(bottom: 10.0),
+                    padding: const EdgeInsets.only(bottom: 10.0),
                     child: Center(
                         child: Text(
                           "Wallet",
@@ -158,9 +158,9 @@ class _WalletState extends State<Wallet> {
 
 
             Container(
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+              padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
               width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(color: Color(0xFFF2F2F2)),
+              decoration: const BoxDecoration(color: Color(0xFFF2F2F2)),
               child: Row(
                 children: [
                   Image.asset(
@@ -220,9 +220,9 @@ class _WalletState extends State<Wallet> {
                     makePayment("100");
                   },
                   child: Container(
-                    padding: EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFE9E2E2)),
+                        border: Border.all(color: const Color(0xFFE9E2E2)),
                         borderRadius: BorderRadius.circular(5)),
                     child: Text(
                       "\$" + "100",
@@ -236,9 +236,9 @@ class _WalletState extends State<Wallet> {
 
                   },
                   child: Container(
-                    padding: EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFE9E2E2)),
+                        border: Border.all(color: const Color(0xFFE9E2E2)),
                         borderRadius: BorderRadius.circular(5)),
                     child: Text(
                       "\$" + "500",
@@ -251,9 +251,9 @@ class _WalletState extends State<Wallet> {
                     makePayment("1000");
                   },
                   child: Container(
-                    padding: EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFE9E2E2)),
+                        border: Border.all(color: const Color(0xFFE9E2E2)),
                         borderRadius: BorderRadius.circular(5)),
                     child: Text(
                       "\$" + "1000",
@@ -266,9 +266,9 @@ class _WalletState extends State<Wallet> {
                     makePayment("2000");
                   },
                   child: Container(
-                    padding: EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFE9E2E2)),
+                        border: Border.all(color: const Color(0xFFE9E2E2)),
                         borderRadius: BorderRadius.circular(5)),
                     child: Text(
                       "\$" + "2000",
@@ -288,11 +288,11 @@ class _WalletState extends State<Wallet> {
                 openEdit();
               },
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20.0),
-                padding: EdgeInsets.symmetric(vertical: 12.0),
+                margin: const EdgeInsets.symmetric(horizontal: 20.0),
+                padding: const EdgeInsets.symmetric(vertical: 12.0),
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    color: Color(0xFF008080),
+                    color: const Color(0xFF008080),
                     borderRadius: BorderRadius.circular(8)),
                 child: const Center(
                   child: Text(
