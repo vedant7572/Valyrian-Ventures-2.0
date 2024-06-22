@@ -49,13 +49,13 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: name==null ? CircularProgressIndicator(): Container(
+      body: name==null ? const CircularProgressIndicator(): Container(
         child: Column(
           children: [
             Stack(
               children: [
                 Container(
-                  padding: EdgeInsets.only(top: 45.0, left: 20.0, right: 20.0),
+                  padding: const EdgeInsets.only(top: 45.0, left: 20.0, right: 20.0),
                   height: MediaQuery.of(context).size.height / 4.3,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
@@ -82,13 +82,13 @@ class _ProfileState extends State<Profile> {
                 ),//profile pic
 
                 Padding(
-                  padding: EdgeInsets.only(top: 70.0),
+                  padding: const EdgeInsets.only(top: 70.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         name!,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.white,
                             fontSize: 23.0,
                             fontWeight: FontWeight.bold,
@@ -104,7 +104,7 @@ class _ProfileState extends State<Profile> {
             ),
 
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 20.0),
+              margin: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Material(
                 borderRadius: BorderRadius.circular(10),
                 elevation: 2.0,
@@ -118,17 +118,17 @@ class _ProfileState extends State<Profile> {
                       borderRadius: BorderRadius.circular(10)),
                   child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.person,
                         color: Colors.black,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20.0,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "Name",
                             style: TextStyle(
                                 color: Colors.black,
@@ -137,7 +137,7 @@ class _ProfileState extends State<Profile> {
                           ),
                           Text(
                            name!,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 16.0,
                                 fontWeight: FontWeight.w600),
@@ -155,7 +155,7 @@ class _ProfileState extends State<Profile> {
             ),
 
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 20.0),
+              margin: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Material(
                 borderRadius: BorderRadius.circular(10),
                 elevation: 2.0,
@@ -169,17 +169,17 @@ class _ProfileState extends State<Profile> {
                       borderRadius: BorderRadius.circular(10)),
                   child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.email,
                         color: Colors.black,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20.0,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "Email",
                             style: TextStyle(
                                 color: Colors.black,
@@ -188,7 +188,7 @@ class _ProfileState extends State<Profile> {
                           ),
                           Text(
                             email!,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 16.0,
                                 fontWeight: FontWeight.w600),
@@ -201,24 +201,24 @@ class _ProfileState extends State<Profile> {
               ),
             ),//email id of user
 
-            SizedBox(
+            const SizedBox(
               height: 30.0,
             ),
 
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 20.0),
+              margin: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Material(
                 borderRadius: BorderRadius.circular(10),
                 elevation: 2.0,
                 child: Container(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     vertical: 15.0,
                     horizontal: 10.0,
                   ),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10)),
-                  child: Row(
+                  child: const Row(
                     children: [
                       Icon(
                         Icons.description,
@@ -245,7 +245,7 @@ class _ProfileState extends State<Profile> {
               ),
             ),//terms and conditions
 
-            SizedBox(
+            const SizedBox(
               height: 30.0,
             ),
 
@@ -270,7 +270,7 @@ class _ProfileState extends State<Profile> {
                 );
               },
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20.0),
+                margin: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Material(
                   borderRadius: BorderRadius.circular(10),
                   elevation: 2.0,
@@ -282,7 +282,7 @@ class _ProfileState extends State<Profile> {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10)),
-                    child:  Row(
+                    child:  const Row(
                       children: [
                         Icon(
                           Icons.delete,
@@ -333,7 +333,7 @@ class _ProfileState extends State<Profile> {
                 );
               },
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20.0),
+                margin: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Material(
                   borderRadius: BorderRadius.circular(10),
                   elevation: 2.0,
@@ -345,7 +345,7 @@ class _ProfileState extends State<Profile> {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10)),
-                    child: Row(
+                    child: const Row(
                       children: [
                         Icon(
                           Icons.logout,
