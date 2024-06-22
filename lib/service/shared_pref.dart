@@ -42,5 +42,4 @@ class SharedPreferenceHelper{
     return prefs.getString(userWalletKey);
   }
 
-
 }

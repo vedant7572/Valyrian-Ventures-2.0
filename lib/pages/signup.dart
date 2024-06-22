@@ -49,7 +49,6 @@ class _SignupState extends State<Signup> {
           "Id": Id,
         };
 
-
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => const BottomNavbar()
@@ -94,8 +93,6 @@ class _SignupState extends State<Signup> {
       _obscureText = !_obscureText;
     });
   } // for password visibility
-
-
 
   @override
   Widget build(BuildContext context) {

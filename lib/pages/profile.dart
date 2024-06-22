@@ -1,4 +1,14 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:random_string/random_string.dart';
+import 'package:valyrian_ventures/pages/login.dart';
+import 'package:valyrian_ventures/pages/signup.dart';
+import 'package:valyrian_ventures/service/shared_pref.dart';
+
+import '../service/auth.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -10,10 +20,36 @@ class Profile extends StatefulWidget {
 
 
 class _ProfileState extends State<Profile> {
+
+  String? name,email;
+
+  getTheSharedPref() async{
+
+    name = await SharedPreferenceHelper().getUserName();
+    email =await SharedPreferenceHelper().getUserEmail();
+
+    setState(() {
+
+    });
+  }
+
+  onThisLoad() async{
+     await getTheSharedPref();
+     setState(() {
+
+     });
+  }
+
+  @override
+  void initState() {
+    onThisLoad();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: name==null ? CircularProgressIndicator(): Container(
         child: Column(
           children: [
             Stack(
@@ -38,20 +74,20 @@ class _ProfileState extends State<Profile> {
                       borderRadius: BorderRadius.circular(60),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(60),
-                          child: Image.asset("images/women.png",
+                          child: Image.asset("images/profile.png",
                             height: 120, width: 120, fit: BoxFit.cover,),
                       ),
                     ),
                   ),
                 ),//profile pic
 
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(top: 70.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "UserName",
+                        name!,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 23.0,
@@ -63,7 +99,7 @@ class _ProfileState extends State<Profile> {
                 ), //name of user
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
 
@@ -80,7 +116,7 @@ class _ProfileState extends State<Profile> {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10)),
-                  child: const Row(
+                  child: Row(
                     children: [
                       Icon(
                         Icons.person,
@@ -100,7 +136,7 @@ class _ProfileState extends State<Profile> {
                                 fontWeight: FontWeight.w600),
                           ),
                           Text(
-                           "Vedant",
+                           name!,
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16.0,
@@ -114,7 +150,7 @@ class _ProfileState extends State<Profile> {
               ),
             ),//name row
 
-            SizedBox(
+            const SizedBox(
               height: 30.0,
             ),
 
@@ -131,7 +167,7 @@ class _ProfileState extends State<Profile> {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10)),
-                  child: const Row(
+                  child: Row(
                     children: [
                       Icon(
                         Icons.email,
@@ -151,7 +187,7 @@ class _ProfileState extends State<Profile> {
                                 fontWeight: FontWeight.w600),
                           ),
                           Text(
-                            "ved@gmail.com",
+                            email!,
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16.0,
@@ -215,7 +251,23 @@ class _ProfileState extends State<Profile> {
 
             GestureDetector(
               onTap: (){
-                // AuthMethods().deleteuser();
+                AuthMethods().deleteUser();
+
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Signup()
+                    )
+                );
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                        backgroundColor: Colors.green,
+                        content: Text(
+                          "Account deleted Successful",
+                          style: TextStyle(fontSize: 20.0),
+                        )
+                    )
+                );
               },
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 20.0),
@@ -230,7 +282,7 @@ class _ProfileState extends State<Profile> {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10)),
-                    child: const Row(
+                    child:  Row(
                       children: [
                         Icon(
                           Icons.delete,
@@ -264,7 +316,21 @@ class _ProfileState extends State<Profile> {
 
             GestureDetector(
               onTap: (){
-                // AuthMethods().SignOut();
+                AuthMethods().signOut();
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LogIn()
+                    )
+                );
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                        backgroundColor: Colors.green,
+                        content: Text(
+                          "Account Signed Out",
+                          style: TextStyle(fontSize: 20.0),
+                        )
+                    )
+                );
               },
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 20.0),
@@ -279,7 +345,7 @@ class _ProfileState extends State<Profile> {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10)),
-                    child: const Row(
+                    child: Row(
                       children: [
                         Icon(
                           Icons.logout,

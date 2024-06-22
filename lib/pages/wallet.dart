@@ -42,16 +42,27 @@ class _WalletState extends State<Wallet> {
 
   }
 
-  Future<void> makePayment(String  amount) async{
-    final int parsedAmount = int.parse(amount as String);
-    final int currentWalletAmount = int.parse(wallet!);
-    final int newAmount = currentWalletAmount + parsedAmount;
-
-    id= await SharedPreferenceHelper().getUserId();
-    await SharedPreferenceHelper().saveUserWallet(newAmount.toString());
-    await DatabaseMethods().updataUserWallet(id!, newAmount.toString());
-    await getthesharedpref();
+  Future<void> makePayment(String amount) async {
+    try {
+      final int parsedAmount = int.parse(amount);
+      if (wallet == null) {
+        throw Exception('Wallet is null');
+      }
+      final int currentWalletAmount = int.parse(wallet!);
+      final int newAmount = currentWalletAmount + parsedAmount;
+      final String? userId = await SharedPreferenceHelper().getUserId();
+      if (userId == null) {
+        throw Exception('User ID is null');
+      }
+      await SharedPreferenceHelper().saveUserWallet(newAmount.toString());
+      await DatabaseMethods().updataUserWallet(userId, newAmount.toString());
+      await getthesharedpref();
+    } catch (e) {
+      print('An error occurred: $e');
+    }
   }
+
+
   Future openEdit() => showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -185,7 +196,7 @@ class _WalletState extends State<Wallet> {
                       ),
 
                       Text(
-                        "\$ " +wallet!,
+                          "\$ " + (wallet ?? '0'),
                         style: AppWidget.boldTextFieldStyle(),
                       )//money remained in the wallet
                     ],
