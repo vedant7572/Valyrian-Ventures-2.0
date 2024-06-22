@@ -16,8 +16,9 @@ class Wallet extends StatefulWidget {
 class _WalletState extends State<Wallet> {
   String? wallet, id;
   int? add;
-  TextEditingController amountcontroller = new TextEditingController();
+  TextEditingController amountController = TextEditingController();
   bool _isLoading = true;
+
   getthesharedpref() async {
     wallet = await SharedPreferenceHelper().getUserWallet();
     id = await SharedPreferenceHelper().getUserId();
@@ -41,13 +42,93 @@ class _WalletState extends State<Wallet> {
 
   }
 
-  Future<void> makePayment(int amount) async{
-    add=int.parse(wallet!)+amount;
+  Future<void> makePayment(String  amount) async{
+    final int parsedAmount = int.parse(amount as String);
+    final int currentWalletAmount = int.parse(wallet!);
+    final int newAmount = currentWalletAmount + parsedAmount;
+
     id= await SharedPreferenceHelper().getUserId();
-    await SharedPreferenceHelper().saveUserWallet(add.toString());
-    await DatabaseMethods().updataUserWallet(id!, add.toString());
+    await SharedPreferenceHelper().saveUserWallet(newAmount.toString());
+    await DatabaseMethods().updataUserWallet(id!, newAmount.toString());
     await getthesharedpref();
   }
+  Future openEdit() => showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        content: SingleChildScrollView(
+          child: Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(Icons.cancel)
+                    ),//cross icon
+                    const SizedBox(
+                      width: 60.0,
+                    ),
+                    const Center(
+                      child: Text(
+                        "Add Money",
+                        style: TextStyle(
+                          color: Color(0xFF008080),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                Text("Amount"),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black38, width: 2.0),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: TextField(
+                    controller: amountController,
+                    decoration: const InputDecoration(
+                        border: InputBorder.none, hintText: 'Enter Amount'),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                Center(
+                  child: GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                      makePayment(amountController.text);
+                    },
+                    child: Container(
+                      width: 100,
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: Color(0xFF008080),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                          child: Text(
+                            "Pay",
+                            style: TextStyle(color: Colors.white),
+                          )),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ));
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +217,7 @@ class _WalletState extends State<Wallet> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    makePayment(100);
+                    makePayment("100");
                   },
                   child: Container(
                     padding: EdgeInsets.all(5),
@@ -151,7 +232,7 @@ class _WalletState extends State<Wallet> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    makePayment(500);
+                    makePayment("500");
 
                   },
                   child: Container(
@@ -167,7 +248,7 @@ class _WalletState extends State<Wallet> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    makePayment(1000);
+                    makePayment("1000");
                   },
                   child: Container(
                     padding: EdgeInsets.all(5),
@@ -182,7 +263,7 @@ class _WalletState extends State<Wallet> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    makePayment(2000);
+                    makePayment("2000");
                   },
                   child: Container(
                     padding: EdgeInsets.all(5),
@@ -204,7 +285,7 @@ class _WalletState extends State<Wallet> {
 
             GestureDetector(
               onTap: (){
-                // openEdit();
+                openEdit();
               },
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 20.0),
