@@ -208,23 +208,12 @@ class _HomeState extends State<Home> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "Valyrain Ventures",
                     style: AppWidget.boldTextFieldStyle(),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(right: 20.0),
-                    padding: EdgeInsets.all(3),
-                    decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(8)),
-                    child: const Icon(
-                      Icons.shopping_cart_outlined,
-                      color: Colors.white,
-                    ),
-                  )
                 ],
               ), //heading row
 

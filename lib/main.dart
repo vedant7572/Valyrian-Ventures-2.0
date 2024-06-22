@@ -22,12 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(), //check
+      home: LogIn(), //check
     );
   }
 }
-//profile branch check
-
-
-//Hello world
-//Hello there
