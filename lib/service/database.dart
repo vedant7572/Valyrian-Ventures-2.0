@@ -10,6 +10,15 @@ class DatabaseMethods {
         .set(userInfoMap);
   }
 
+  Future addFoodToCart(Map<String, dynamic> userInfoMap, String Id) async {
+    return await FirebaseFirestore.instance
+        .collection('users')
+        .doc(Id)
+        .collection("cart")
+        .doc()
+        .set(userInfoMap);
+  }
+
   updataUserWallet(String Id, String amount) async {
     return await FirebaseFirestore.instance
         .collection("users")
