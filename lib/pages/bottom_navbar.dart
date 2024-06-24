@@ -1,10 +1,10 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:valyrian_ventures/pages/cart.dart';
 import 'package:valyrian_ventures/pages/profile.dart';
 import 'package:valyrian_ventures/pages/wallet.dart';
 
 import 'home.dart';
-import 'order.dart';
 
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({super.key});
@@ -20,16 +20,16 @@ class _BottomNavbarState extends State<BottomNavbar> {
   late Widget currentPage;
   late Home homepage;
   late Profile profile;
-  late Order order;
+  late Cart cart;
   late Wallet wallet;
 
   @override
   void initState() {
     homepage = Home();
-    order = Order();
+    cart = Cart();
     profile = Profile();
     wallet = Wallet();
-    pages = [homepage, order, wallet, profile];
+    pages = [homepage, cart, wallet, profile];
     super.initState();
   }
 

@@ -81,8 +81,8 @@ class _HomeState extends State<Home> {
                                   SizedBox(
                                     height: 5.0,
                                   ),
-                                  Text("Valyrian steel sword",
-                                      style: AppWidget.lightTextFieldStyle()),
+                                  // Text(ds["Detail"],
+                                  //     style: AppWidget.lightTextFieldStyle()),
                                   SizedBox(
                                     height: 5.0,
                                   ),
@@ -169,10 +169,11 @@ class _HomeState extends State<Home> {
                                             MediaQuery.of(context).size.width /
                                                 2,
                                         child: Text(
-                                          "Valyrian Stell sword",
+                                          ds["Detail"],
                                           style:
                                               AppWidget.lightTextFieldStyle(),
-                                        )),
+                                        )
+                                    ),
                                     SizedBox(
                                       height: 5.0,
                                     ),
