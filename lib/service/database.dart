@@ -31,13 +31,32 @@ class DatabaseMethods {
   }
 
   Future<Stream<QuerySnapshot>> getItem(String name) async {
-    return await FirebaseFirestore.instance.collection(name).snapshots();
+    return await FirebaseFirestore.instance
+        .collection(name)
+        .snapshots();
   }
-  // Future<String> getUserWallet(String userId) async {
-  //   DocumentSnapshot userDoc = await FirebaseFirestore.instance
-  //       .collection("users")
-  //       .doc(userId)
-  //       .get();
-  //   return userDoc['wallet'].toString();
-  // }
+
+  Future<Stream<QuerySnapshot>> getFoodCart(String id) async {
+    return await FirebaseFirestore.instance
+        .collection("users")
+        .doc(id)
+        .collection("cart")
+        .snapshots();
+  }
+
+  Future<void> deleteCart(String userId) async {
+    final CollectionReference cartCollection = FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .collection('cart');
+
+    WriteBatch batch = FirebaseFirestore.instance.batch();
+
+    QuerySnapshot cartSnapshot = await cartCollection.get();
+    for (QueryDocumentSnapshot doc in cartSnapshot.docs) {
+      batch.delete(doc.reference);
+    }
+
+    await batch.commit();
+  }
 }

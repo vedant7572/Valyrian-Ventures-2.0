@@ -20,11 +20,9 @@ class _CartState extends State<Cart> {
   int total=0, amount2=0;
 
   void startTimer(){
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 1), () {
       amount2=total;
-      setState(() {
-
-      });
+      setState(() {});
     });
   }
 
@@ -37,10 +35,8 @@ class _CartState extends State<Cart> {
 
   ontheload()async{
     await getthesharedpref();
-    //foodStream= await DatabaseMethods().getFoodCart(id!);
-    setState(() {
-
-    });
+    foodStream= await DatabaseMethods().getFoodCart(id!);
+    setState(() {});
   }
 
   @override
@@ -76,28 +72,34 @@ class _CartState extends State<Cart> {
                       padding: const EdgeInsets.all(10),
                       child: Row(
                         children: [
+
                           Container(
                             height: 90,
                             width: 40,
                             decoration: BoxDecoration(
                                 border: Border.all(),
-                                borderRadius: BorderRadius.circular(10)),
+                                borderRadius: BorderRadius.circular(20)),
                             child: Center(child: Text(ds["Quantity"])),
-                          ),
+                          ),//quatity circle
+
                           const SizedBox(
                             width: 20.0,
                           ),
+
                           ClipRRect(
-                              borderRadius: BorderRadius.circular(60),
+                              borderRadius: BorderRadius.circular(20),
                               child: Image.network(
                                 ds["Image"],
                                 height: 90,
                                 width: 90,
                                 fit: BoxFit.cover,
-                              )),
+                              )
+                          ), //image of item
+
                           const SizedBox(
                             width: 20.0,
                           ),
+
                           Column(
                             children: [
                               Text(
@@ -109,15 +111,17 @@ class _CartState extends State<Cart> {
                                 style: AppWidget.semiBoldTextFieldStyle(),
                               )
                             ],
-                          )
-                        ],
+                          ) //name and total price displayed
+                        ], //individual cart item builder
                       ),
                     ),
                   ),
                 );
-              })
+              }
+              )
               : const CircularProgressIndicator();
-        });
+        }
+        );
   }
 
 
@@ -146,11 +150,12 @@ class _CartState extends State<Cart> {
             ),
 
             Container(
-                height: MediaQuery.of(context).size.height/2,
-                // child: foodCart()
+                height: MediaQuery.of(context).size.height/1.7,
+                child: foodCart()
             ),
             const Spacer(),
             const Divider(),
+
             Padding(
               padding: const EdgeInsets.only(left: 10.0, right: 10.0),
               child: Row(
@@ -165,16 +170,29 @@ class _CartState extends State<Cart> {
                     style: AppWidget.semiBoldTextFieldStyle(),
                   )
                 ],
-              ),
+              ), //total price
             ),
+
             const SizedBox(
               height: 20.0,
             ),
+
             GestureDetector(
               onTap: ()async{
-                // int amount= int.parse(wallet!)-amount2;
-                // await DatabaseMethods().UpdateUserwallet(id!, amount.toString());
-                // await SharedPreferenceHelper().saveUserWallet(amount.toString());
+                int amount= int.parse(wallet!)-amount2;
+                await DatabaseMethods().updataUserWallet(id!, amount.toString());
+                await SharedPreferenceHelper().saveUserWallet(amount.toString());
+                await DatabaseMethods().deleteCart(id!);
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                        backgroundColor: Colors.green,
+                        content: Text(
+                          "Order placed successfully",
+                          style: TextStyle(fontSize: 20.0),
+                        )
+                    )
+                );
               },
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 10.0),

@@ -207,9 +207,9 @@ class _DetailsState extends State<Details> {
 
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            backgroundColor: Colors.orangeAccent,
+                            backgroundColor: Colors.green,
                             content: Text(
-                              "Food Added to Cart",
+                              "Item Added to Cart",
                               style: TextStyle(fontSize: 18.0),
                             ),
                           ),

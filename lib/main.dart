@@ -4,6 +4,7 @@ import 'package:valyrian_ventures/admin/add_item.dart';
 import 'package:valyrian_ventures/admin/admin_login.dart';
 import 'package:valyrian_ventures/admin/home_admin.dart';
 import 'package:valyrian_ventures/pages/bottom_navbar.dart';
+import 'package:valyrian_ventures/pages/cart.dart';
 import 'package:valyrian_ventures/pages/home.dart';
 import 'package:valyrian_ventures/pages/login.dart';
 import 'package:valyrian_ventures/pages/profile.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LogIn(), //check
+      home: BottomNavbar(), //check
     );
   }
 }
