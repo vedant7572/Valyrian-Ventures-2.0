@@ -211,6 +211,7 @@ class _HomeState extends State<Home> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+
                   Text(
                     "Valyrain Ventures",
                     style: AppWidget.boldTextFieldStyle(),
@@ -219,15 +220,15 @@ class _HomeState extends State<Home> {
               ), //heading row
 
               SizedBox(
-                height: 15.0,
+                height: 25.0,
               ),
 
-              Text("Survival Kit", style: AppWidget.headlineTextFieldStyle()),
-              Text("All things you need to survive the long night",
-                  style: AppWidget.lightTextFieldStyle()),
-              SizedBox(
-                height: 20.0,
-              ),
+              // Text("Survival Kit", style: AppWidget.headlineTextFieldStyle()),
+              // Text("All things you need to survive the long night",
+              //     style: AppWidget.lightTextFieldStyle()),
+              // SizedBox(
+              //   height: 20.0,
+              // ),
 
               Container(
                   margin: EdgeInsets.only(right: 20.0),

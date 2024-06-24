@@ -107,6 +107,7 @@ class _CartState extends State<Cart> {
                                 style: AppWidget.semiBoldTextFieldStyle(),
                               ),
                               Text(
+                                textAlign: TextAlign.left,
                                 "\$"+ ds["Total"],
                                 style: AppWidget.semiBoldTextFieldStyle(),
                               )
@@ -152,7 +153,8 @@ class _CartState extends State<Cart> {
             Container(
                 height: MediaQuery.of(context).size.height/1.7,
                 child: foodCart()
-            ),
+            ),// list view of items using stream builder
+
             const Spacer(),
             const Divider(),
 
@@ -163,7 +165,7 @@ class _CartState extends State<Cart> {
                 children: [
                   Text(
                     "Total Price",
-                    style: AppWidget.boldTextFieldStyle(),
+                    style: AppWidget.headlineTextFieldStyle(),
                   ),
                   Text(
                     "\$"+ total.toString(),
@@ -171,7 +173,7 @@ class _CartState extends State<Cart> {
                   )
                 ],
               ), //total price
-            ),
+            ), //total price
 
             const SizedBox(
               height: 20.0,
@@ -210,7 +212,7 @@ class _CartState extends State<Cart> {
                     )
                 ),
               ),
-            )
+            ) //checkout button
           ],
         ),
       ),

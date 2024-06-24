@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:valyrian_ventures/admin/admin_login.dart';
 import 'package:valyrian_ventures/pages/signup.dart';
 import '../widget/widget_support.dart';
 import 'bottom_navbar.dart';
@@ -62,7 +63,7 @@ class _LogInState extends State<LogIn> {
               backgroundColor: Colors.red,
               content: Text(
                 message,
-                style: TextStyle(fontSize: 18.0, color: Colors.black),
+                style: const TextStyle(fontSize: 18.0, color: Colors.black),
               )
           )
       );
@@ -112,9 +113,11 @@ class _LogInState extends State<LogIn> {
                   ),
                 ),//white part
                 Container(
-                  margin: EdgeInsets.only(top: 60.0, left: 20.0, right: 20.0),
+                  margin: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
                   child: Column(
                     children: [
+
+
                       Center(
                         child: Image.asset(
                           "images/logo.png",
@@ -122,20 +125,21 @@ class _LogInState extends State<LogIn> {
                           fit: BoxFit.cover,
                         ),
                       ), //center logo
-                      SizedBox(
+                      const SizedBox(
                         height: 50.0,
                       ),
                       Material(
                         elevation: 5.0,
                         borderRadius: BorderRadius.circular(20),
                         child: Container(
-                          padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                          padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height /2,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(20),
                           ),
+
                           child: Form(
                             key: _formkey,
                             child: Column(
@@ -185,7 +189,7 @@ class _LogInState extends State<LogIn> {
                                       borderRadius: BorderRadius.all(Radius.circular(12.0)),
                                     ),
                                     labelText: 'Password',
-                                    prefixIcon: Icon(Icons.lock),
+                                    prefixIcon: const Icon(Icons.lock),
                                     suffixIcon: IconButton(
                                       icon: Icon(
                                         _obscureText ? Icons.visibility : Icons.visibility_off,
@@ -203,7 +207,7 @@ class _LogInState extends State<LogIn> {
                                   onTap: (){
                                     Navigator.push(
                                         context,
-                                        MaterialPageRoute(builder: (context)=>ForgotPassword())
+                                        MaterialPageRoute(builder: (context)=>const ForgotPassword())
                                     );
                                   },
                                   child: Container(
@@ -232,10 +236,10 @@ class _LogInState extends State<LogIn> {
                                     elevation: 5.0,
                                     borderRadius: BorderRadius.circular(20),
                                     child: Container(
-                                      padding: EdgeInsets.symmetric(vertical: 8.0),
+                                      padding: const EdgeInsets.symmetric(vertical: 8.0),
                                       width: 200,
                                       decoration: BoxDecoration(
-                                          color: Color(0xFFE80606),
+                                          color: const Color(0xFFE80606),
                                           borderRadius: BorderRadius.circular(20)),
                                       child: const Center(
                                           child: Text(
@@ -249,7 +253,12 @@ class _LogInState extends State<LogIn> {
                                       ),
                                     ),
                                   ),
-                                ),//login button
+                                ),
+
+                                const SizedBox(
+                                  height: 30.0,
+                                ),
+
                               ],
                             ),
                           ),
@@ -270,7 +279,25 @@ class _LogInState extends State<LogIn> {
                             "Don't have an account? Sign up",
                             style: AppWidget.semiBoldTextFieldStyle(),
                           )
-                      )//sign up gesture detector
+                      ),
+                      const SizedBox(
+                        height: 40.0,
+                      ),
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context)=>const AdminLogin())
+                          );
+                        },
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Admin Login",
+                            style: AppWidget.semiBoldTextFieldStyle(),
+                          ),
+                        ),
+                      ),//admin login button//sign up gesture detector
                     ],
                   ),
                 )

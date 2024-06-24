@@ -7,7 +7,7 @@ class AppWidget{
   {
     return const TextStyle(
       color: Colors.black,
-      fontSize: 27,
+      fontSize: 30,
       fontWeight: FontWeight.bold,
       fontFamily: 'Cinzel',
     );
